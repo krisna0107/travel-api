@@ -20,3 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'kontens'], function(){
     Route::get('/{limit}/limit', 'KontenController@index');
 });
+
+Route::group(['prefix' => 'akuns'], function(){
+    Route::get('/{email}/email', 'AkunController@getAkun');
+    Route::get('/{limit}/limit', 'AkunController@index');
+});
