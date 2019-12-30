@@ -10,4 +10,8 @@ class KontenController extends Controller
     public function index($limit){
         return Konten::paginate($limit);
     }
+
+    public function getKonten($id){
+        return Konten::find($id);
+    }
 }

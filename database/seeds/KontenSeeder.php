@@ -12,7 +12,7 @@ class KontenSeeder extends Seeder
      */
     public function run()
     {
-        for($i=0; $i<=5; $i++){
+        for($i=0; $i<=11; $i++){
             Konten::insert([
                 'judul' => Str::random(10),
                 'harga' => mt_rand(10000, 99999),

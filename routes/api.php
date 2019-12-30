@@ -19,9 +19,22 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['prefix' => 'kontens'], function(){
     Route::get('/{limit}/limit', 'KontenController@index');
+    Route::get('/{id}/konten', 'KontenController@getKonten');
 });
 
 Route::group(['prefix' => 'akuns'], function(){
     Route::get('/{email}/email', 'AkunController@getAkun');
     Route::get('/{limit}/limit', 'AkunController@index');
+});
+
+Route::group(['prefix' => 'pesans'], function(){
+    Route::get('/kode', 'PesanController@getKodeBook');
+    Route::post('/{userid}/user', 'PesanController@tambah');
+    Route::put('/{kdbook}/booking', 'PesanController@setTotal');
+});
+
+Route::group(['prefix' => 'carts'], function(){
+    Route::get('/{kdbook}/kode', 'CartController@getCart');
+    Route::get('/{kdbook}/booking/{userid}/user/{kontenid}/konten', 'CartController@cekCart');
+    Route::post('/{kdbook}/booking/{userid}/user/{kontenid}/konten', 'CartController@tambah');
 });
