@@ -15,7 +15,7 @@ class CreateCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('kd_book');
+            $table->string('kd_book', 50);
             $table->unsignedbigInteger('konten_id');
             $table->unsignedbigInteger('user_id');
             $table->date('pinjam');
