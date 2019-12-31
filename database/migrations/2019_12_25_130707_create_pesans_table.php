@@ -14,7 +14,7 @@ class CreatePesansTable extends Migration
     public function up()
     {
         Schema::create('pesans', function (Blueprint $table) {
-            $table->string('kd_book');
+            $table->string('kd_book', 50);
             $table->unsignedbigInteger('user_id');
             $table->bigInteger('total_harga')->nullable();
             $table->enum('status', ['P', 'D']);
