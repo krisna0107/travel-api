@@ -37,4 +37,5 @@ Route::group(['prefix' => 'carts'], function(){
     Route::get('/{kdbook}/kode', 'CartController@getCart');
     Route::get('/{kdbook}/booking/{userid}/user/{kontenid}/konten', 'CartController@cekCart');
     Route::post('/{kdbook}/booking/{userid}/user/{kontenid}/konten', 'CartController@tambah');
+    Route::delete('/{kdbook}/booking/{userid}/user/{kontenid}/konten', 'CartController@hapus');
 });
