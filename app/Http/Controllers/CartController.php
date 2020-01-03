@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cart;
+use App\Konten;
 
 class CartController extends Controller
 {
@@ -11,11 +12,15 @@ class CartController extends Controller
         return Cart::where('kd_book', $kdbook)->get();
     }
 
+    public function getCartKontenByUserKdBook($kdbook, $userid){
+        $clause =[['kd_book', $kdbook], ['user_id', $userid]];
+        $cart = Cart::select('konten_id')->where($clause);
+        return Konten::whereIn('id', $cart)->get();
+    }
+
     public function cekCart($kdbook, $userid, $kontenid){
-        $cart = Cart::where('kd_book', $kdbook)
-        ->where('user_id', $userid)
-        ->where('konten_id', $kontenid)
-        ->first();
+        $clause = [['kd_book', $kdbook], ['user_id', $userid], ['konten_id', $kontenid]];
+        $cart = Cart::where($clause)->first();
         if(!$cart)
             return response()->json([
                 "cart" => "sukses",
