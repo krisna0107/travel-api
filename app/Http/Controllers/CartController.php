@@ -18,6 +18,18 @@ class CartController extends Controller
         return Konten::whereIn('id', $cart)->paginate($limit);
     }
 
+    public function getTotal($kdbook, $userid){
+        $clause =[['kd_book', $kdbook], ['user_id', $userid]];
+        $cart = Cart::select('konten_id')->where($clause);
+        $konten = Konten::whereIn('id', $cart)->sum('harga');
+        $sum = (int)$konten+2000;
+        return response()->json([
+            "subtotal" => $konten,
+            "tax"=> 2000,
+            "total" => $sum
+        ], 200);
+    }
+
     public function cekCart($kdbook, $userid, $kontenid){
         $clause = [['kd_book', $kdbook], ['user_id', $userid], ['konten_id', $kontenid]];
         $cart = Cart::where($clause)->first();
