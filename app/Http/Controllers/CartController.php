@@ -12,10 +12,10 @@ class CartController extends Controller
         return Cart::where('kd_book', $kdbook)->get();
     }
 
-    public function getCartKontenByUserKdBook($kdbook, $userid){
+    public function getCartKontenByUserKdBook($kdbook, $userid, $limit){
         $clause =[['kd_book', $kdbook], ['user_id', $userid]];
         $cart = Cart::select('konten_id')->where($clause);
-        return Konten::whereIn('id', $cart)->get();
+        return Konten::whereIn('id', $cart)->paginate($limit);
     }
 
     public function cekCart($kdbook, $userid, $kontenid){
