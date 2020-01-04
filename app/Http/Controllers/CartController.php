@@ -13,7 +13,7 @@ class CartController extends Controller
     }
 
     public function getCartKontenByUserKdBook($kdbook, $userid, $limit){
-        $clause =[['kd_book', $kdbook], ['user_id', $userid]];
+        $clause =[['kd_book', $kdbook], ['user_id', $userid], ['status', 'P']];
         $cart = Cart::select('konten_id')->where($clause);
         return Konten::whereIn('id', $cart)->paginate($limit);
     }
