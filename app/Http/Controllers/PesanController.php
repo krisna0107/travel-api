@@ -8,8 +8,16 @@ date_default_timezone_set('Asia/Jakarta');
 
 class PesanController extends Controller
 {
+
+    public function getPesanByKdBookAndStatus($kdbook, $userid, $stat){
+        $clause = [['kd_book', $kdbook], ['user_id', $userid], ['status', $stat]];
+        $pesan = Pesan::where($clause)->first();
+
+        return $pesan;
+    }
+
     /**
-     * Generate Nota
+     * Generate Kode Book
      * 
      * @return \Illuminate\Http\Response
      */

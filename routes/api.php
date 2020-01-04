@@ -29,6 +29,7 @@ Route::group(['prefix' => 'akuns'], function(){
 
 Route::group(['prefix' => 'pesans'], function(){
     Route::get('/kode', 'PesanController@getKodeBook');
+    Route::get('/{kdbook}/booking/{userid}/user/{stat}/status', 'PesanController@getPesanByKdBookAndStatus');
     Route::post('/{userid}/user', 'PesanController@tambah');
     Route::post('/{kdbook}/booking/{userid}/user/{total}/set', 'PesanController@setTotal');
 });
