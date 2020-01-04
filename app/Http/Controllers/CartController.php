@@ -60,8 +60,10 @@ class CartController extends Controller
     }
 
     public function hapus($kdbook, $userid, $kontenid){
-        $clause = [['kd_book', $kdbook], ['user_id', $userid], ['konten_id', $kontenid]];
-        $cart =  Cart::where($clause)->first();
+        $clausePesan = [['kd_book', $kdbook], ['user_id', $userid], ['status', 'P']];
+        $pesan = Pesan::select('kd_book')->where($clausePesan);
+        $clause = [['kd_book', $pesan], ['user_id', $userid], ['konten_id', $kontenid]];
+        $cart =  Cart::whereIn($clause)->first();
         $cart->delete();
 
         return $cart;
