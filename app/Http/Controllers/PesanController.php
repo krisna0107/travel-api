@@ -34,7 +34,7 @@ class PesanController extends Controller
 
     public function setTotal($kdbook, $userid, $total){
         $clause =[['kd_book', $kdbook], ['user_id', $userid]];
-        $pesan = Pesan::where($clause)->first();
+        $pesan = Pesan::where($clause);
         $pesan->total_harga = $total;
         $pesan->status = 'D';
         $pesan->save();
