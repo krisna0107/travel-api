@@ -9,9 +9,9 @@ date_default_timezone_set('Asia/Jakarta');
 class PesanController extends Controller
 {
 
-    public function getPesanByKdBookAndStatus($userid, $stat, $limit){
+    public function getPesanByKdBookAndStatus($userid, $stat){
         $clause = [['user_id', $userid], ['status', $stat]];
-        $pesan = Pesan::where($clause)->paginate($limit);
+        $pesan = Pesan::where($clause)->get();
 
         return $pesan;
     }
