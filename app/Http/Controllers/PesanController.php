@@ -32,9 +32,9 @@ class PesanController extends Controller
         return $pesan;
     }
 
-    public function setTotal(request $request, $kdbook, $userid){
+    public function setTotal($kdbook, $userid, $total){
         $pesan = Pesan::where('kd_book', $kdbook)->first();
-        $pesan->total_harga = $request->total_harga;
+        $pesan->total_harga = $total;
         $pesan->status = 'D';
         $pesan->save();
 
