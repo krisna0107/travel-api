@@ -10,7 +10,7 @@ class PesanController extends Controller
 {
 
     public function getPesanByKdBookAndStatus($kdbook, $userid, $stat){
-        $clause = [['kd_book', $kdbook], ['user_id', $userid], ['status', $stat]];
+        $clause = [['user_id', $userid], ['status', $stat]];
         $pesan = Pesan::where($clause)->first();
 
         return $pesan;
