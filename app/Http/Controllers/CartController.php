@@ -14,7 +14,7 @@ class CartController extends Controller
     }
 
     public function getCartKontenByUserKdBook($kdbook, $userid, $limit){
-        $clause =[['kd_book', $kdbook], ['user_id', $userid]];
+        $clause =[['kd_book', $kdbook], ['user_id', $userid], ['status', 'P']];
         $pesan = Pesan::select('kd_book')->where($clause);
         $cart = Cart::select('konten_id')->whereIn('kd_book', $pesan);
         return Konten::whereIn('id', $cart)->paginate($limit);
