@@ -15,7 +15,8 @@ class CartController extends Controller
     public function getCartKontenByUserKdBook($kdbook, $userid, $limit){
         $clause =[['kd_book', $kdbook], ['user_id', $userid]];
         $cart = Cart::select('konten_id')->where($clause);
-        return Konten::whereIn('id', $cart)->whare('status', 'P')->paginate($limit);
+        $ktn = [['id', $cart],['status', 'P']];
+        return Konten::whereIn($ktn)->paginate($limit);
     }
 
     public function getTotal($kdbook, $userid){
