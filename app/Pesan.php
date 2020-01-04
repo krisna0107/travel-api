@@ -7,4 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Pesan extends Model
 {
     protected $primaryKey = 'kd_book';
+    public $incrementing = false;
 }
