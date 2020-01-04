@@ -21,8 +21,9 @@ class CartController extends Controller
     }
 
     public function getTotal($kdbook, $userid){
-        $clause =[['kd_book', $kdbook], ['user_id', $userid]];
-        $cart = Cart::select('konten_id')->where($clause);
+        $clause =[['kd_book', $kdbook], ['user_id', $userid], ['status', 'P']];
+        $pesan = Pesan::select('kd_book')->where($clause);
+        $cart = Cart::select('konten_id')->where($pesan);
         $konten = Konten::whereIn('id', $cart)->sum('harga');
         $sum = (int)$konten+2000;
         return response()->json([
@@ -33,8 +34,10 @@ class CartController extends Controller
     }
 
     public function cekCart($kdbook, $userid, $kontenid){
-        $clause = [['kd_book', $kdbook], ['user_id', $userid], ['konten_id', $kontenid]];
-        $cart = Cart::where($clause)->first();
+        $clausePesan = [['kd_book', $kdbook], ['user_id', $userid], ['status', 'P']];
+        $pesan = Pesan::select('kd_book')->where($clausePesan);
+        $clause = [['user_id', $userid], ['konten_id', $kontenid]];
+        $cart =  Cart::whereIn('kd_book', $pesan)->where($clause)->first();
         if(!$cart)
             return response()->json([
                 "cart" => "sukses",
