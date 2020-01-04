@@ -30,7 +30,7 @@ Route::group(['prefix' => 'akuns'], function(){
 Route::group(['prefix' => 'pesans'], function(){
     Route::get('/kode', 'PesanController@getKodeBook');
     Route::post('/{userid}/user', 'PesanController@tambah');
-    Route::put('/{kdbook}/booking', 'PesanController@setTotal');
+    Route::put('/{kdbook}/booking/{userid}/user', 'PesanController@setTotal');
 });
 
 Route::group(['prefix' => 'carts'], function(){

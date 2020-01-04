@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3bb4dacacf43532a01bf1d3d6dd3bbe1",
+    "content-hash": "32ff6dfa932aaea830fa6c6846f9c714",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -760,6 +760,46 @@
                 "storage"
             ],
             "time": "2019-12-08T21:46:50+00:00"
+        },
+        {
+            "name": "lintangtimur/ovoid",
+            "version": "v1.2.4.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lintangtimur/ovoid.git",
+                "reference": "5e6b0b01792422c219fcff6bd10f5c03cd0e46ba"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lintangtimur/ovoid/zipball/5e6b0b01792422c219fcff6bd10f5c03cd0e46ba",
+                "reference": "5e6b0b01792422c219fcff6bd10f5c03cd0e46ba",
+                "shasum": ""
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7",
+                "symfony/var-dumper": "^4.2"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/helper/function.php"
+                ],
+                "psr-4": {
+                    "Stelin\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "lintangtimur",
+                    "email": "lintangtimur915@gmail.com"
+                }
+            ],
+            "description": "Un-Official OVOID API Wrapper",
+            "time": "2019-12-28T11:17:41+00:00"
         },
         {
             "name": "monolog/monolog",
