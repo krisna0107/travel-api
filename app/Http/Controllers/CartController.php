@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Cart;
 use App\Konten;
+use App\Pesan;
 
 class CartController extends Controller
 {
@@ -14,8 +15,9 @@ class CartController extends Controller
 
     public function getCartKontenByUserKdBook($kdbook, $userid, $limit){
         $clause =[['kd_book', $kdbook], ['user_id', $userid]];
-        $cart = Cart::select('konten_id')->where($clause);
-        return Konten::where('status', 'P')->whereIn('id', $cart)->paginate($limit);
+        $pesan = Pesan::select('kd_book')->where($clause);
+        $cart = Cart::select('konten_id')->whereIn('kd_book', $pesan);
+        return Konten::whereIn('id', $cart)->paginate($limit);
     }
 
     public function getTotal($kdbook, $userid){
