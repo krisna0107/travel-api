@@ -23,7 +23,7 @@ Route::group(['prefix' => 'kontens'], function(){
 });
 
 Route::group(['prefix' => 'akuns'], function(){
-    Route::get('/{email}/email', 'AkunController@getAkun');
+    Route::post('/{email}/email', 'AkunController@getAkun');
     Route::get('/{limit}/limit', 'AkunController@index');
 });
 
