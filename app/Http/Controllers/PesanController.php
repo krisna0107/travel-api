@@ -11,7 +11,7 @@ class PesanController extends Controller
 
     public function getPesanByKdBookAndStatus($userid, $stat, $limit){
         $clause = [['user_id', $userid], ['status', $stat]];
-        $pesan = Pesan::where($clause)->paginate($limit);
+        $pesan = Pesan::where($clause)->orderBy('kd_book', 'DESC')->paginate($limit);
 
         return $pesan;
     }

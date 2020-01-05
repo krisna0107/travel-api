@@ -42,3 +42,7 @@ Route::group(['prefix' => 'carts'], function(){
     Route::post('/{kdbook}/booking/{userid}/user/{kontenid}/konten', 'CartController@tambah');
     Route::delete('/{kdbook}/booking/{userid}/user/{kontenid}/konten', 'CartController@hapus');
 });
+
+Route::group(['prefix' => 'ovos'], function(){
+    Route::get('/{nomor}/nomor', 'OVOIDController@index');
+});
