@@ -9,10 +9,11 @@ class AkunController extends Controller
     public function getAkun($email){
         $akun = Akun::where('email', $email)->first();
         if(!$akun){
-            $akun->email = $email;
-            $akun->save();
-            
-            return $akun;
+            $create = new Akun;
+            $create->email = $email;
+            $create->save();
+
+            return $create;
         }else{
             return $akun;
         }
