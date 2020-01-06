@@ -47,7 +47,7 @@ class OVOIDController extends Controller
             // print_r(json_decode($response));
             // return $response;
             
-            $decoded = json_decode($response, true);
+            // $decoded = json_decode($response, true);
             // foreach($decoded->data as $pendingBalance)
             // {
             // // echo "Pending balance of " . $pendingBalance->complete[0]."<br>";
@@ -55,7 +55,7 @@ class OVOIDController extends Controller
             // foreach ($decoded as $emp) {
             //     return $emp['complete']['merchant_name']."<br/>";
             // }
-            return $decoded->data;
+            return $response;
         }
     }
 }
