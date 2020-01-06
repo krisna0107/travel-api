@@ -52,10 +52,10 @@ class OVOIDController extends Controller
             // {
             // // echo "Pending balance of " . $pendingBalance->complete[0]."<br>";
             // }
-            foreach ($decoded as $emp) {
-                return $emp['complete']['merchant_name']."<br/>";
-            }
-            // return $decoded->data;
+            // foreach ($decoded as $emp) {
+            //     return $emp['complete']['merchant_name']."<br/>";
+            // }
+            return $decoded->data;
         }
     }
 }
