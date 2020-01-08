@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Pesan;
+use App\PaymentGateWay;
 date_default_timezone_set('Asia/Jakarta');
 
 class PesanController extends Controller
@@ -40,11 +41,15 @@ class PesanController extends Controller
         return $pesan;
     }
 
-    public function setTotal($kdbook, $userid, $total){
+    public function setTotal($kdbook, $userid, $total, $bank, $va, $status){
         $clause =[['kd_book', $kdbook], ['user_id', $userid]];
         $pesan = Pesan::where($clause)->first();
         $pesan->total_harga = $total;
-        $pesan->status = 'D';
+        // $pesan->status = 'D';
+        $pesan->bank = $bank;
+        $pesan->va = $va;
+        if($status=="settlement")
+            $pesan->status = 'D';
         $pesan->save();
 
         return $pesan;

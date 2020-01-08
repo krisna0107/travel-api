@@ -9,6 +9,11 @@ use Ixudra\Curl\Facades\Curl;
 
 class PaymentGateWay extends Controller
 {
+
+    private function baseUrl() {
+        return "https://api.sandbox.midtrans.com/v2";
+    }
+
     public function seting(){
         Config::$serverKey = 'U0ItTWlkLXNlcnZlci1sV3JtYzU5ZjkxNEFxOFY1X0gwVUlIcU46';
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
@@ -36,7 +41,7 @@ class PaymentGateWay extends Controller
                 "va_number" => $userid
                 )
         );
-        $response = Curl::to('https://api.sandbox.midtrans.com/v2/charge')
+        $response = Curl::to($this->baseUrl().'/charge')
         ->withHeader('Accept: application/json')
         ->withHeader('Authorization: Basic U0ItTWlkLXNlcnZlci1sV3JtYzU5ZjkxNEFxOFY1X0gwVUlIcU46')
         ->withHeader('Content-Type: application/json')
@@ -44,6 +49,16 @@ class PaymentGateWay extends Controller
         ->asJson()
         ->post();
         
+        return response()->json($response);
+    }
+
+    public function getStatus($kdbook){
+        $response = Curl::to($this->baseUrl()."/".$kdbook.'/status')
+        ->withHeader('Accept: application/json')
+        ->withHeader('Authorization: Basic U0ItTWlkLXNlcnZlci1sV3JtYzU5ZjkxNEFxOFY1X0gwVUlIcU46')
+        ->withHeader('Content-Type: application/json')
+        ->asJson()
+        ->get();
         return response()->json($response);
     }
 }

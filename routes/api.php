@@ -31,7 +31,7 @@ Route::group(['prefix' => 'pesans'], function(){
     Route::get('/kode', 'PesanController@getKodeBook');
     Route::get('/{userid}/user/{stat}/status/{limit}/limit', 'PesanController@getPesanByKdBookAndStatus');
     Route::post('/{userid}/user', 'PesanController@tambah');
-    Route::post('/{kdbook}/booking/{userid}/user/{total}/set', 'PesanController@setTotal');
+    Route::post('/{kdbook}/booking/{userid}/user/{total}/set/{bank}/bank/{va}/va/{status}', 'PesanController@setTotal');
 });
 
 Route::group(['prefix' => 'carts'], function(){
@@ -50,5 +50,6 @@ Route::group(['prefix' => 'ovos'], function(){
 Route::group(['prefix' => 'mids'], function(){
     Route::post('', 'PaymentGateWay@seting');
     Route::get('/{end}', 'PaymentGateWay@base64yaa');
+    Route::get('/{kdbook}/book/status', 'PaymentGateWay@getStatus');
     Route::post('/{amount}/harga/{kdbok}/book/{userid}/user/{bank}/bank', 'PaymentGateWay@getVa');
 });

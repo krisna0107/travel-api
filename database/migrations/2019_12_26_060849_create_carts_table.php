@@ -18,6 +18,8 @@ class CreateCartsTable extends Migration
             $table->string('kd_book', 50);
             $table->unsignedbigInteger('konten_id');
             $table->unsignedbigInteger('user_id');
+            $table->string('bank');
+            $table->string('va');
             $table->date('pinjam');
             $table->date('kembali');
             $table->foreign('user_id')->references('id')->on('akuns');
