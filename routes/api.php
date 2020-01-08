@@ -46,3 +46,9 @@ Route::group(['prefix' => 'carts'], function(){
 Route::group(['prefix' => 'ovos'], function(){
     Route::get('/{nomor}/nomor', 'OVOIDController@index');
 });
+
+Route::group(['prefix' => 'mids'], function(){
+    Route::post('', 'PaymentGateWay@seting');
+    Route::get('/{end}', 'PaymentGateWay@base64yaa');
+    Route::post('/{amount}/harga/{kdbok}/book/{userid}/user/{bank}/bank', 'PaymentGateWay@getVa');
+});

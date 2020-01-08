@@ -27,7 +27,7 @@ class PesanController extends Controller
         if($getdata!=null)
             return ++$getdata->kd_book;
         else
-            return "B-".$datenow."-00001";
+            return $datenow."-00001";
     }
 
     public function tambah(request $request, $userid){
