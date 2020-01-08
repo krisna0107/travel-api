@@ -40,7 +40,6 @@ class PaymentGateWay extends Controller
 
         curl_setopt_array($curl, array(
             CURLOPT_URL => "https://api.sandbox.midtrans.com/v2/charge",
-            CURLOPT_HEADER => true,
             CURLOPT_CUSTOMREQUEST => "POST",
             CURLOPT_HTTPHEADER => array(
                 // Set Here Your Requesred Headers
@@ -57,7 +56,7 @@ class PaymentGateWay extends Controller
         if ($err) {
             return "cURL Error #:" . $err;
         } else {
-            return response()->json($response);
+            return response()->json(json_encode($response));
         }
     }
 }
