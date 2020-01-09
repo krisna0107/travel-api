@@ -52,9 +52,9 @@ class CartController extends Controller
 
     public function cekStock($kontenid, $pinjam, $kembali){
         $pesan = Pesan::select('kd_book')->where('status', 'D');
-        $clause = [['pinjam', '<=', $pinjam], ['kembali', '>=', $kembali], ['konten_id', $kontenid]];
+        $clause = [['pinjam', '<=', $pinjam], ['kembali', '>=', $kembali]];
         $tgl = [$pinjam, $kembali];
-        $cart =  Cart::whereIn('kd_book', $pesan)->where($clause)->WhereBetween('pinjam', $tgl)->orWhereBetween('kembali', $tgl)->first();
+        $cart =  Cart::whereIn('kd_book', $pesan)->where('konten_id', $kontenid)->where($clause)->orWhereBetween('pinjam', $tgl)->orWhereBetween('kembali', $tgl)->first();
         if(!$cart)
             return response()->json([
                 "cart" => "tersedia",
