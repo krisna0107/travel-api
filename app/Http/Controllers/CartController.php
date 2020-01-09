@@ -54,7 +54,7 @@ class CartController extends Controller
         $pesan = Pesan::select('kd_book')->where('status', 'D');
         $clause = [['pinjam', '<=', $pinjam], ['kembali', '>=', $kembali]];
         $tgl = [$pinjam, $kembali];
-        $cart =  Cart::whereIn('kd_book', $pesan)->where('konten_id', $kontenid)->where($clause)->orWhereBetween('pinjam', $tgl)->orWhereBetween('kembali', $tgl)->first();
+        $cart =  Cart::whereIn('kd_book', $pesan)->where($clause)->orWhereBetween('pinjam', $tgl)->orWhereBetween('kembali', $tgl)->where('konten_id', $kontenid)->first();
         if(!$cart)
             return response()->json([
                 "cart" => "tersedia",
