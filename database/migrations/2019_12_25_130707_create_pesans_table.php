@@ -18,6 +18,8 @@ class CreatePesansTable extends Migration
             $table->unsignedbigInteger('user_id');
             $table->bigInteger('total_harga')->nullable();
             $table->enum('status', ['P', 'D']);
+            $table->string('bank');
+            $table->string('va');
             $table->primary('kd_book');
             $table->foreign('user_id')->references('id')->on('akuns');
             $table->timestamps();
