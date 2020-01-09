@@ -50,6 +50,22 @@ class CartController extends Controller
             ], 200);
     }
 
+    public function cekStock($kontenid, $pinjam, $kembali){
+        $pesan = Pesan::select('kd_book')->where('status', 'D');
+        $clause = [['pinjam', '<=', $pinjam], ['kembali', '>=', $kembali], ['konten_id', $kontenid]];
+        $cart =  Cart::whereIn('kd_book', $pesan)->where('konten_id', $kontenid)->first();
+        if(!$cart)
+            return response()->json([
+                "cart" => "tersedia",
+                "status"=> false
+            ], 200);
+        else 
+            return response()->json([
+                "cart" => "tidak",
+                "status"=> true
+            ], 200);
+    }
+
     public function tambah(request $request, $kdbook, $userid, $kontenid){
         $cart = new Cart;
         $cart->kd_book = $kdbook;

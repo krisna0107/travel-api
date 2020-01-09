@@ -39,6 +39,7 @@ Route::group(['prefix' => 'carts'], function(){
     Route::get('/{kdbook}/booking/{userid}/user/total', 'CartController@getTotal');
     Route::get('/{kdbook}/booking/{userid}/user/{limit}/limit', 'CartController@getCartKontenByUserKdBook');
     Route::get('/{kdbook}/booking/{userid}/user/{kontenid}/konten', 'CartController@cekCart');
+    Route::get('/{kontenid}/konten/{pinjam}/pinjam/{kembali}/kembali', 'CartController@cekStock');
     Route::post('/{kdbook}/booking/{userid}/user/{kontenid}/konten', 'CartController@tambah');
     Route::delete('/{kdbook}/booking/{userid}/user/{kontenid}/konten', 'CartController@hapus');
 });
