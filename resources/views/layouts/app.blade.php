@@ -78,7 +78,7 @@
         </main>
     </div>
     <script type="text/javascript">
-    var baseURl = "http://127.0.0.1:8000/api"
+    var baseURl = "https://www.travel.ykyj.xyz/api"
         function simpan(){
             var data = $('.form-user-tambah').serialize();
             $.ajax({
