@@ -35,11 +35,11 @@ class PesanController extends Controller
      */
     public function getKodeBook(){
         $datenow = date('my');
-        $getdata = Pesan::where('kd_book', 'like', '%TestPAW2-'.$datenow.'-%')->orderBy('kd_book', 'desc')->first();
+        $getdata = Pesan::where('kd_book', 'like', '%TestPAW3-'.$datenow.'-%')->orderBy('kd_book', 'desc')->first();
         if($getdata!=null)
             return ++$getdata->kd_book;
         else
-            return "TestPAW2-".$datenow."-00001";
+            return "TestPAW3-".$datenow."-00001";
     }
 
     public function tambah($userid, $kontenid, $tanggal, $jumlah, $th){
