@@ -20,18 +20,24 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'kontens'], function(){
     Route::get('/{limit}/limit', 'KontenController@index');
     Route::get('/{id}/konten', 'KontenController@getKonten');
+    Route::post('', 'KontenController@tambah');
+    Route::post('/{id}/edit', 'KontenController@edit');
+    Route::delete('/{id}', 'KontenController@hapus');
 });
 
 Route::group(['prefix' => 'akuns'], function(){
     Route::post('/{email}/email', 'AkunController@getAkun');
+    Route::post('/{email}/email/{telp}/telp', 'AkunController@setTelp');
     Route::get('/{limit}/limit', 'AkunController@index');
 });
 
 Route::group(['prefix' => 'pesans'], function(){
     Route::get('/kode', 'PesanController@getKodeBook');
+    Route::get('/{userid}/user/{stat}/status', 'PesanController@getPesanByKdBookAndStatusFirst');
     Route::get('/{userid}/user/{stat}/status/{limit}/limit', 'PesanController@getPesanByKdBookAndStatus');
-    Route::post('/{userid}/user', 'PesanController@tambah');
-    Route::post('/{kdbook}/booking/{userid}/user/{total}/set/{bank}/bank/{va}/va/{status}', 'PesanController@setTotal');
+    Route::post('/{userid}/user/{kontenid}/konten/{tanggal}/tgl/{jumlah}/jumlah/{th}/harga', 'PesanController@tambah');
+    Route::post('/{kdbook}/booking/{userid}/user/{bank}/bank/{va}/va/{status}', 'PesanController@setTotal');
+    Route::delete('/{kdbook}/del', 'PesanController@hapus');
 });
 
 Route::group(['prefix' => 'carts'], function(){

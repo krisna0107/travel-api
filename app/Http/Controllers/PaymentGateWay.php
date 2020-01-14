@@ -14,16 +14,6 @@ class PaymentGateWay extends Controller
         return "https://api.sandbox.midtrans.com/v2";
     }
 
-    public function seting(){
-        Config::$serverKey = 'U0ItTWlkLXNlcnZlci1sV3JtYzU5ZjkxNEFxOFY1X0gwVUlIcU46';
-        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
-        Config::$isProduction = false;
-        // Set sanitization on (default)
-        Config::$isSanitized = true;
-        // Set 3DS transaction for credit card to true
-        // Config::$is3ds = true;
-    }
-
     public function base64yaa($end){
         return base64_encode($end);
     }

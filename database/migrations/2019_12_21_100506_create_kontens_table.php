@@ -16,6 +16,7 @@ class CreateKontensTable extends Migration
         Schema::create('kontens', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('judul');
+            $table->longText('deskripsi');
             $table->bigInteger('harga');
             $table->text('url_photo');
             // $table->timestamps();
