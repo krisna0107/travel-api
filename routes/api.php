@@ -58,5 +58,6 @@ Route::group(['prefix' => 'mids'], function(){
     Route::post('', 'PaymentGateWay@seting');
     Route::get('/{end}', 'PaymentGateWay@base64yaa');
     Route::get('/{kdbook}/book/status', 'PaymentGateWay@getStatus');
+    Route::post('/{kdbook}/book/cancel', 'PaymentGateWay@cencelTrf');
     Route::post('/{amount}/harga/{kdbok}/book/{userid}/user/{bank}/bank', 'PaymentGateWay@getVa');
 });

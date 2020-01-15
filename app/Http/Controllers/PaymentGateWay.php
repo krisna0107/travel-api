@@ -49,6 +49,18 @@ class PaymentGateWay extends Controller
         ->withHeader('Content-Type: application/json')
         ->asJson()
         ->get();
+
+        return response()->json($response);
+    }
+
+    public function cencelTrf($kdbook){
+        $response = Curl::to($this->baseUrl()."/".$kdbook.'/cancel')
+        ->withHeader('Accept: application/json')
+        ->withHeader('Authorization: Basic U0ItTWlkLXNlcnZlci1sV3JtYzU5ZjkxNEFxOFY1X0gwVUlIcU46')
+        ->withHeader('Content-Type: application/json')
+        ->asJson()
+        ->post();
+
         return response()->json($response);
     }
 }
