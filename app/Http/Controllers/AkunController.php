@@ -9,7 +9,7 @@ class AkunController extends Controller
     
     public static function getEmail($id){
         $acc = Akun::find($id);
-        return $acc->email;
+        return $acc['email'];
     }
 
     public function getAkun($email){
